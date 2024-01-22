@@ -47,4 +47,10 @@ public class PersonnesApi {
     public void updatePersonne(Personne personne, @PathParam("id") Integer id){
         annuaire.updatePersonne(id, personne);
     }
+
+    @PATCH
+    @Path("/{id}")
+    public void patchPersonne(Personne personne, @PathParam("id") Integer id){
+        annuaire.patchPersonne(id, personne);
+    }
 }

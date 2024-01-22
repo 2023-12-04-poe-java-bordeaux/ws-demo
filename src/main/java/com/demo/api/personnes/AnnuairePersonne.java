@@ -30,4 +30,15 @@ public class AnnuairePersonne {
     public void updatePersonne(Integer id, Personne personne) {
         personnes.replace(id, personne);
     }
+
+    public void patchPersonne(Integer id, Personne personneRequeteHttp) {
+
+        Personne personneToPatch = personnes.get(id);
+        if(personneRequeteHttp.getPrenom() != null)
+            personneToPatch.setPrenom(personneRequeteHttp.getPrenom());
+        if(personneRequeteHttp.getNom() != null)
+            personneToPatch.setNom(personneRequeteHttp.getNom());
+
+        personnes.replace(id, personneToPatch);
+    }
 }
