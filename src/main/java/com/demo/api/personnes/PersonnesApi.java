@@ -35,4 +35,10 @@ public class PersonnesApi {
     public Personne getPersonne(@PathParam("id") Integer id){
         return annuaire.getPersonne(id);
     }
+
+    @DELETE
+    @Path("/{id}")
+    public void deletePersonne(@PathParam("id") Integer id){
+        annuaire.deletePersonne(id);
+    }
 }

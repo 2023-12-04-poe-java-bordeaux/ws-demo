@@ -22,4 +22,8 @@ public class AnnuairePersonne {
         Personne p = personnes.get(id);
         return p;
     }
+
+    public void deletePersonne(Integer id) {
+        personnes.remove(id);
+    }
 }
