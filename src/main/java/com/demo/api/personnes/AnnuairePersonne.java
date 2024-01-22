@@ -9,8 +9,9 @@ public class AnnuairePersonne {
     private HashMap<Integer, Personne> personnes = new HashMap<>();
 
     public void addPersonne(Personne newPersonne){
-        // idCount = idCount + 1
-        personnes.put(idCount++, newPersonne);
+        idCount++;// idCount = idCount + 1
+        newPersonne.setId(idCount);
+        personnes.put(idCount, newPersonne);
     }
 
     public List<Personne> getList(){
