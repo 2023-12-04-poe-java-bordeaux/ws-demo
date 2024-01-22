@@ -28,4 +28,11 @@ public class PersonnesApi {
         System.out.println(newPersonne);
         annuaire.addPersonne(newPersonne);
     }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Personne getPersonne(@PathParam("id") Integer id){
+        return annuaire.getPersonne(id);
+    }
 }
