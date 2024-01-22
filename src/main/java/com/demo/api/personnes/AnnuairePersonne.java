@@ -26,4 +26,8 @@ public class AnnuairePersonne {
     public void deletePersonne(Integer id) {
         personnes.remove(id);
     }
+
+    public void updatePersonne(Integer id, Personne personne) {
+        personnes.replace(id, personne);
+    }
 }
