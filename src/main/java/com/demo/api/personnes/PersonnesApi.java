@@ -62,8 +62,27 @@ public class PersonnesApi {
 
     @PUT
     @Path("/{id}")
-    public void updatePersonne(Personne personne, @PathParam("id") Integer id){
-        annuaire.updatePersonne(id, personne);
+    public Response updatePersonne(Personne personne, @PathParam("id") Integer id){
+        // BAD REQUEST
+        if(!id.equals(personne.getId())){
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("id différents").build();
+        }
+        else { // NOT FOUND
+            Personne p = annuaire.getPersonne(id);
+            if(p == null) {
+                //  retourner 404
+                return Response
+                        .status(Response.Status.NOT_FOUND)
+                        .entity("Id inexistant").build();
+        } else {
+
+                // OK
+                annuaire.updatePersonne(id, personne);
+                return Response.ok().build();
+            }
+        }
     }
 
     @PATCH
