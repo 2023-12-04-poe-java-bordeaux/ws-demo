@@ -2,6 +2,7 @@ package com.demo.api.personnes;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,20 @@ public class PersonnesApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void addPersonne(Personne newPersonne){
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addPersonne(Personne newPersonne){
         System.out.println(newPersonne);
+
+        if(newPersonne.getNom().isBlank()) {
+            // BAD REQUEST
+           return Response
+                   .status(Response.Status.BAD_REQUEST)
+                   .entity("Le nom ne peut etre vide").build();
+        }
+
+        // OK
         annuaire.addPersonne(newPersonne);
+        return Response.status(Response.Status.CREATED).entity(newPersonne).build();
     }
 
     @GET
